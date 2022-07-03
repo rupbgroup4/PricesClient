@@ -22,7 +22,7 @@ export default function FCExplore(props) {
     const [exploreItems, setExploreItems] = useState(null);
     //const { search } = useContext(SearchContext);
     const { user, setUserLocation } = useContext(UserContext);
-    let local = false;
+    let local = true;
     let http = `http://proj.ruppin.ac.il/bgroup4/prod/server/api/`;
     if (local) {
         http = `https://localhost:44377/api/`;
@@ -78,6 +78,9 @@ export default function FCExplore(props) {
             const a = async () => { await setUserLocation(); };
             a().then(() => {
                 if (user.userLocation) {
+                    console.log('====================================');
+                    console.log(user.userLocation);
+                    console.log('====================================');
                     getItems();
                 }
             });

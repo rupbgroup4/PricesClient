@@ -30,7 +30,7 @@ export default function FCLogIn(props) {
     const [forgotDialog, setForgotDialog] = useState(false);
     const [forgotEmail, setForgotEmail] = useState("");
 
-    let local = false;
+    let local = true;
     let api = `http://proj.ruppin.ac.il/bgroup4/prod/server/api`;
     const httpLogin = `/Users/Login`;
     const httpGetUsersEmails = `/lists/GetAllUsersEmails`;

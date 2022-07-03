@@ -43,7 +43,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FCMenu() {
+export default function FCMenu(props) {
 
   const { user, SetUser } = useContext(UserContext);
   const classes = useStyles();
@@ -55,7 +55,7 @@ export default function FCMenu() {
     left: false,    //bottom: false,    //right: false,
   });
 
-  let local = false;
+  let local = true;
   let http = `http://proj.ruppin.ac.il/bgroup4/prod/server/api/`;
   let getFavorites = `lists/GetUserFavoriteItems`;
   let setReceiptStatus = `users/SetReceiptStatus`;
@@ -249,6 +249,12 @@ export default function FCMenu() {
     setFavoritesOpen(true);
     getFavoritesCards();
   }
+  const handleUserProfile = () => {
+    props.profilePage()
+    console.log('====================================');
+    console.log("Clicked Profile");
+    console.log('====================================');
+  }
   const logOut = () => {
     SetUser({ loggedIn: false })
     //localStorage.removeItem('userContext');
@@ -265,7 +271,7 @@ export default function FCMenu() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem >
+        <ListItem button onClick={handleUserProfile} >
           <ListItemIcon ><PersonOutlineTwoToneIcon color="primary" /></ListItemIcon>
           <ListItemText
             primary={<>{user.firstName}&nbsp;{user.lastName}</>}
@@ -278,9 +284,9 @@ export default function FCMenu() {
           <ListItemIcon onClick={handleChat}><ChatTwoToneIcon htmlColor={green[700]} /></ListItemIcon>
           <ListItemText primary={"Chats"} />
         </ListItem> */}
-        <ListItem button>
-          <ListItemIcon onClick={handleFavorites}><LoyaltyTwoToneIcon htmlColor={Red['A700']} /></ListItemIcon>
-          <ListItemText onClick={handleFavorites} primary={"Favorites"} />
+        <ListItem button onClick={handleFavorites}>
+          <ListItemIcon ><LoyaltyTwoToneIcon htmlColor={Red['A700']} /></ListItemIcon>
+          <ListItemText primary={"Favorites"} />
           <Badge
             badgeContent={user.favorites ? user.favorites.length : '0'}
             showZero
@@ -322,7 +328,7 @@ export default function FCMenu() {
           onClick={toggleDrawer('left', true)}
         >
           {/* <MenuIcon /> */}
-          <img src={PricesLogo} alt="Prices" style={{height:"40px"}}/>
+          <img src={PricesLogo} alt="Prices" style={{ height: "40px" }} />
         </IconButton>
         <SwipeableDrawer
           //anchor={'left'}

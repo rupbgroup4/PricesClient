@@ -19,7 +19,7 @@ import ExploreIcon from '@material-ui/icons/Explore';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import '../../Styles/mysass.scss';
+//import '../../Styles/mysass.scss';
 import AddIcon from '@material-ui/icons/Add';
 import FCAdd from '../Pages/FCAdd';
 
@@ -239,6 +239,7 @@ function FCTopBar(props) {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      
     >
       <MenuItem onClick={handleMenuClose}>{user.firstName}'s Profile</MenuItem>
       {/* <MenuItem onClick={handleMenuClose}>{user.name}'s account</MenuItem> */}
@@ -295,7 +296,7 @@ function FCTopBar(props) {
           zIndex: 999,
         }}>
         <Toolbar>
-          <FCMenu />
+          <FCMenu profilePage={handleProfile}/>
           <Typography className={classes.title} variant="h6" noWrap>
             {title}
           </Typography>

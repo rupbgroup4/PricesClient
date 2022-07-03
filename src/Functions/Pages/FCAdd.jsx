@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FCImage from './Add_Form/FCImage';
 import { Button, CircularProgress, /*FormControl*/ } from '@material-ui/core';
 import FCDatePicker from './Add_Form/FCDatePicker';
-import '../../Styles/mysass.scss';
+//import '../../Styles/mysass.scss';
 // import DateFnsUtils from '@date-io/date-fns';
 // import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import AnnouncementOutlinedIcon from '@material-ui/icons/AnnouncementOutlined';
@@ -45,7 +45,7 @@ function FCAdd(props) {
     const [item2Edit, setItem2Edit] = useState(null);
     const [valid, setValid] = useState(false);
     const [posting, setPosting] = useState(false);
-    let local = false;
+    let local = true;
     let http = `http://proj.ruppin.ac.il/bgroup4/prod/server/api/`;
     if (local) {
         http = `https://localhost:44377/api/`;
@@ -177,30 +177,25 @@ function FCAdd(props) {
     return (
         <div>
             <div className={classes.table} >
-                <div >
-                    <div style={{ float: 'center', width: "250px", }}>
-                        <FCImage parent={"Receipt"} key={"item"} image={receipt.image} />
-                    </div>
-                    <div style={{ float: 'center', width: "250px", }} >
-                        <FCDatePicker
-                            title={"Receipt Date"}
-                            onDateChange={(e) => SetReceipt({ ...receipt, date: e })}
-                            date={receipt.date}
-                        />
-                        {/* <AnnouncementOutlinedIcon htmlColor="red" /> */}
-                        <FCDiscount color={"white"} />
-                    </div>
+                <div style={{ float: 'center', width: "250px", }}>
+                    <FCImage parent={"Receipt"} key={"item"} image={receipt.image} />
+                </div>
+                <div style={{ float: 'center', width: "250px", }} >
+                    <FCDatePicker
+                        title={"Receipt Date"}
+                        onDateChange={(e) => SetReceipt({ ...receipt, date: e })}
+                        date={receipt.date}
+                    />
+                    {/* <AnnouncementOutlinedIcon htmlColor="red" /> */}
+                    <FCDiscount color={"white"} />
                 </div>
                 <br style={{ clear: "both" }} />
-                <div >
-                    <div style={{ /*height: "100px",*/ width: "250px", float: 'center' }}>
-                        <FCStoreDetails />
-                        {receipt.store.name}
-                        <br />
-                        <div >
-                            <FCDescriptions color={"white"} />
-                        </div>
-
+                <div style={{ /*height: "100px",*/ width: "250px", float: 'center' }}>
+                    <FCStoreDetails />
+                    {receipt.store.name}
+                    <br />
+                    <div  >
+                        <FCDescriptions color={"white"} />
                     </div>
                     <div style={{ float: 'center' }}>
                         <FCAddItem item2Edit={item2Edit} setItem2Edit={setItem2Edit} />

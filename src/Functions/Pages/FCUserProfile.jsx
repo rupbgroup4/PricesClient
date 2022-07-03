@@ -44,7 +44,7 @@ export default function ControlledAccordions() {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
     const [open, setOpen] = useState(false);
-    let local = false;
+    let local = true;
     let http = `http://proj.ruppin.ac.il/bgroup4/prod/server/api/`;
     let updateURL = `users/UpdateUser`;
     let loginURL = `Users/Login`;
